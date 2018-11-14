@@ -130,15 +130,5 @@ public class DangKyDAO extends SubjectDAO {
 		}
 		return false;
 	}
-     
-	
-	public static void main(String[] args) {
-		
-		for (DangKy dk: new DangKyDAO().getListDK()) {
-			System.out.println(dk.getMssv());
-		}
-
-	}
-
 
 }

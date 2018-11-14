@@ -9,7 +9,7 @@ Gồm có 3 thư mục:
 
 ## Cài đặt  
 1. Tạo Database với SQL Server:  
-- Cách 1: Mở SQL Server, open file Query_QLDKHT.sql, sau đó chạy Query  
+- Cách 1: Mở SQL Server, open file _Query_QLDKHT.sql_, sau đó chạy Query  
 - Cách 2: Attach database đã có sẵn. Hướng dẫn attach: Chuột phải vào _database_ -> chọn _Attach_ -> chọn file _QUANLYDANGKYHOCTAP.mdf_   
 2. Mở file databaselogin.txt và thay thế 3 dòng dữ liệu:  
 - Dòng 1: user đăng nhập SQL server (thường là sa)  

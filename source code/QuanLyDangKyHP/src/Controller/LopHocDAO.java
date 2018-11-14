@@ -96,9 +96,4 @@ public class LopHocDAO extends SubjectDAO {
 		return false;
 	}
 
-	public static void main(String[] args) {
-		
-
-	}
-
 }

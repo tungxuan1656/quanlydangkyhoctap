@@ -65,11 +65,15 @@ public class view extends JFrame {
 		// create
 		initCompose();
 		
+		listSubject();
+		
+		ShowTable();
+	}
+	
+	private void listSubject() {
 		listsv = new SinhVienDAO().getListSV();
 		listlop = new LopHocDAO().getListLop();
 		listdk = new DangKyDAO().getListDK();
-		
-		ShowTable();
 	}
 	
 	int i=1, j=1, k=1;
@@ -499,12 +503,9 @@ public class view extends JFrame {
 				else {
 					if (new SinhVienDAO().deleteSinhVien(tfMssv.getText())) {
 						JOptionPane.showMessageDialog(rootPane, "Xóa thành công!");
-						int index = 0;
-						for (index=0; index < listsv.size(); index++) {
-							if (listsv.get(index).getMssv().equals(tfMssv.getText())) break;
-						}
-						listsv.remove(index);
-						((DefaultTableModel) tbSV.getModel()).removeRow(index);
+						listSubject();
+						ResetTable();
+						ShowTable();
 					}
 					else JOptionPane.showMessageDialog(rootPane, "Gặp lỗi từ SQL Server!");
 				}
@@ -566,13 +567,9 @@ public class view extends JFrame {
 				else {
 					if (new LopHocDAO().deleteLopHoc(tfMaLop.getText())) {
 						JOptionPane.showMessageDialog(rootPane, "Xóa thành công!");
-						int index = 0;
-						for (index=0; index<listlop.size(); index++) {
-							if (listlop.get(index).getMahp().equals(tfMaLop.getText()))
-								break;
-						}
-						listlop.remove(index);
-						((DefaultTableModel) tbLH.getModel()).removeRow(index);
+						listSubject();
+						ResetTable();
+						ShowTable();
 					}
 					else JOptionPane.showMessageDialog(rootPane, "Không tồn tại!");
 				}
@@ -624,13 +621,9 @@ public class view extends JFrame {
 				else {
 					if (new DangKyDAO().deleteDangKy(tfMssvDK.getText(), tfMaLopDK.getText())) {
 						JOptionPane.showMessageDialog(rootPane, "Xóa thành công!");
-						int index = 0;
-						for (index=0; index<listdk.size(); index++) {
-							if (listdk.get(index).getMssv().equals(tfMssvDK.getText()) && listdk.get(index).getMalop().equals(tfMaLopDK.getText()))
-								break;
-						}
-						listdk.remove(index);
-						((DefaultTableModel) tbDK.getModel()).removeRow(index);
+						listSubject();
+						ResetTable();
+						ShowTable();
 					}
 					else JOptionPane.showMessageDialog(rootPane, "Không tồn tại!");
 				}

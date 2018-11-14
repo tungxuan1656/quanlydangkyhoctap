@@ -96,11 +96,5 @@ public class SinhVienDAO extends SubjectDAO {
 		}
 		return false;
 	}
-	
-    public static void main(String[] args) {
-        for (SinhVien sv: new SinhVienDAO().getListSV()) {
-        	System.out.println(sv.getNgaysinh());
-        }
-    }
 
 }

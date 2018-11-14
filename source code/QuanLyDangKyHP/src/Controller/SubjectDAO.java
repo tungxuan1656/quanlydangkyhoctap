@@ -7,10 +7,12 @@ import java.sql.DriverManager;
 
 public class SubjectDAO {
 	@SuppressWarnings("unused")
+	
 	String user="sa";
 	String pw="1010";
 	String dbname="DANGKYHOCPHAN";
 	protected Connection conn;
+	
 	public SubjectDAO() {
 		try {
 			FileReader fr = new FileReader("databaselogin.txt");
