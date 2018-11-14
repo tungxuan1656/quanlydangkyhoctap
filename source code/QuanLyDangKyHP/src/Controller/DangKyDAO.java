@@ -69,32 +69,6 @@ public class DangKyDAO extends SubjectDAO {
         return searchdk;
     }
 	
-	public DangKy getDK(String mssv, String malop) {
-		DangKy d = new DangKy();
-		String getdk = "SELECT mssv, tensv, malop, mahp, tenhp, tinchi, tiet, thu, phonghoc "
-				+ "FROM SinhVien, LopHoc "
-				+ "WHERE mssv LIKE N\'" + mssv + "\' AND malop LIKE N\'" + malop + "\'";
-		try {
-            PreparedStatement ps = conn.prepareStatement(getdk);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-            	
-                d.setMssv(rs.getString("mssv"));
-                d.setTensv(rs.getString("tensv"));
-                d.setMalop(rs.getString("malop"));
-                d.setMahp(rs.getString("mahp"));
-                d.setTenhp(rs.getString("tenhp"));
-                d.setTin(rs.getInt("tinchi"));
-                d.setTiet(rs.getString("tiet"));
-                d.setThu(rs.getString("thu"));
-                d.setPhonghoc(rs.getString("phonghoc"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-		return d;
-	}
-	
 	public boolean checkDangKy(String mssv, String malop, ArrayList<DangKy> listdk) {
 		for (DangKy dk: listdk) {
 			if (dk.getMssv().equals(mssv) && dk.getMalop().equals(malop)) return false;

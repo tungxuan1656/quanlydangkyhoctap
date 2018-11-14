@@ -483,9 +483,9 @@ public class view extends JFrame {
 			        
 			        if(new SinhVienDAO().addSinhVien(s)){
 			            JOptionPane.showMessageDialog(rootPane, "Thêm thành công!");
-			            listsv.add(s); // them vao danh sach SV
-			            ((DefaultTableModel) tbSV.getModel()).addRow(new Object[] {
-								i++, s.getMssv(), s.getTensv(), new SimpleDateFormat("dd/MM/yyyy").format(s.getNgaysinh()), s.getKhoa(), s.getLop(), s.getThanhpho()});
+			            listSubject();
+						ResetTable();
+						ShowTable();
 			        } else{
 			            JOptionPane.showMessageDialog(rootPane, "MSSV đã tồn tại!");
 			        }
@@ -547,9 +547,9 @@ public class view extends JFrame {
 			        
 			        if(new LopHocDAO().addLopHoc(lh)){
 			            JOptionPane.showMessageDialog(rootPane, "Thêm thành công!");
-			            listlop.add(lh); // them vao danh sach HP
-			            ((DefaultTableModel) tbLH.getModel()).addRow(new Object[] {
-			            		j++, lh.getMalop(), lh.getMahp(), lh.getTenhp(), lh.getTinchi(), lh.getTiet(), lh.getThu(), lh.getPhonghoc()});
+			            listSubject();
+						ResetTable();
+						ShowTable();
 			        } else{
 			            JOptionPane.showMessageDialog(rootPane, "Mã lớp đã tồn tại!");
 			        }
@@ -602,10 +602,9 @@ public class view extends JFrame {
 				else {
 					if (new DangKyDAO().addDangKy(tfMssvDK.getText(), tfMaLopDK.getText())) {
 						JOptionPane.showMessageDialog(rootPane, "Thêm thành công!");
-						DangKy dk = new DangKyDAO().getDK(tfMssvDK.getText(), tfMaLopDK.getText());
-						listdk.add(dk);
-						((DefaultTableModel) tbDK.getModel()).addRow(new Object[] {
-								k++, dk.getMssv(), dk.getTensv(), dk.getMalop(), dk.getMahp(), dk.getTenhp(), dk.getTin(), dk.getTiet(), dk.getThu(), dk.getPhonghoc()});
+						listSubject();
+						ResetTable();
+						ShowTable();
 					}
 					else JOptionPane.showMessageDialog(rootPane, "Không có MSSV hoặc Không có Mã lớp");
 				}
