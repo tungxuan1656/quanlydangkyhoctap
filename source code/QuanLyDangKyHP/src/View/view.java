@@ -526,7 +526,7 @@ public class view extends JFrame {
 			}
 		});
 		
-		// event ThemHP
+		// event themlop
 		btThemlop.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -534,6 +534,9 @@ public class view extends JFrame {
 						tfTin.getText().equals("") || tfTiet.getText().equals("") || 
 						tfThu.getText().equals("") || tfPhong.getText().equals("")) {
 					JOptionPane.showMessageDialog(rootPane, "Không được để trống Mã Lớp!");
+				}
+				else if (!(new LopHocDAO().checkLH(tfPhong.getText(), tfTiet.getText(), tfThu.getText(), listlop))) {
+					JOptionPane.showMessageDialog(rootPane, "Không thể có 2 lớp chung 1 phòng trong cùng 1 thời điểm");
 				}
 				else {
 					LopHoc lh = new LopHoc();
@@ -597,8 +600,11 @@ public class view extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if (tfMssvDK.getText().equals("") && tfMaLopDK.getText().equals(""))
 					JOptionPane.showMessageDialog(rootPane, "Không được để trống MSSV và Mã lớp!");
-				else if (!(new DangKyDAO().checkDangKy(tfMssvDK.getText(), tfMaLopDK.getText(), listdk)))
+				else if (!(new DangKyDAO().checkDangKyDaCo(tfMssvDK.getText(), tfMaLopDK.getText(), listdk)))
 					JOptionPane.showMessageDialog(rootPane, "Đã tồn tại ĐK này!");
+				else if (!(new DangKyDAO().checkDKKoHopLe(tfMssvDK.getText(), tfMaLopDK.getText(), listlop, listdk))) {
+					JOptionPane.showMessageDialog(rootPane, "Sinh viên này không thể học 2 môn trong cùng 1 thời điểm");
+				}
 				else {
 					if (new DangKyDAO().addDangKy(tfMssvDK.getText(), tfMaLopDK.getText())) {
 						JOptionPane.showMessageDialog(rootPane, "Thêm thành công!");

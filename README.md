@@ -25,7 +25,7 @@ Phần mềm gồm 3 tab:
 - Xóa SV: Xóa sv theo MSSV đã nhập trong trường nhập  
 - Tìm kiếm: Cung cấp chức năng tìm kiếm phối hợp nhiều thông tin, bao gồm có _MSSV, Họ tên, Khóa, Lớp, Thành Phố_, sinh viên được tìm thấy khi mà thông tin của sv đó có chứa chuỗi là các chuỗi trong các trường nhập  
 2. Tab __Lớp Học__: Chứa thông tin các lớp học được mở  
-- Thêm Lớp: Khi thêm lớp phải điền đầy đủ các thông tin trong trường nhập  
+- Thêm Lớp: Khi thêm lớp phải điền đầy đủ các thông tin trong trường nhập. Tiết trong ngày và thứ trong tuần ngăn với nhau bằng dấu phẩy.(ví dụ: tiết: 1,2,3,4 thứ 4,5,6)  
 - Xóa Lớp: Xóa lớp theo mã lớp  
 - Tìm kiếm: Cung cấp chức năng tìm kiếm phối hợp các trường thông tin _Mã lớp, Tên HP, Mã HP_  
 3. Tab __Đăng Ký__: Chứa thông tin về các lớp mà sinh viên đã đăng ký  

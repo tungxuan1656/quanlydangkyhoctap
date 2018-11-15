@@ -3,6 +3,7 @@ package Controller;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import Model.LopHoc;
 
@@ -94,6 +95,31 @@ public class LopHocDAO extends SubjectDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public boolean checkLH(String phonghoc, String tiet, String thu, ArrayList<LopHoc> listlh) {
+		for (LopHoc l: listlh) {
+			if(l.getPhonghoc().equals(phonghoc)) {
+				StringTokenizer s1 = new StringTokenizer(thu, ",");
+				while (s1.hasMoreTokens()) {
+					StringTokenizer s2 = new StringTokenizer(l.getThu(), ",");
+					String s1next = s1.nextToken();
+					while (s2.hasMoreTokens()) {
+						if (s1next.equals(s2.nextToken())) {
+							StringTokenizer s3 = new StringTokenizer(tiet, ",");
+							while (s3.hasMoreTokens()) {
+								StringTokenizer s4 = new StringTokenizer(l.getTiet(), ",");
+								String s3next = s3.nextToken();
+								while(s4.hasMoreTokens()) {
+									if (s3next.equals(s4.nextToken())) return false;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return true;
 	}
 
 }

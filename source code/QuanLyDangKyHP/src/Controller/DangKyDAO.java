@@ -3,8 +3,10 @@ package Controller;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import Model.DangKy;
+import Model.LopHoc;
 
 public class DangKyDAO extends SubjectDAO {
 
@@ -69,9 +71,41 @@ public class DangKyDAO extends SubjectDAO {
         return searchdk;
     }
 	
-	public boolean checkDangKy(String mssv, String malop, ArrayList<DangKy> listdk) {
+	public boolean checkDangKyDaCo(String mssv, String malop, ArrayList<DangKy> listdk) {
 		for (DangKy dk: listdk) {
 			if (dk.getMssv().equals(mssv) && dk.getMalop().equals(malop)) return false;
+		}
+		return true;
+	}
+	public boolean checkDKKoHopLe(String mssv,String malop, ArrayList<LopHoc> listlop, ArrayList<DangKy> listdk) {
+		String tiet = "", thu = "";
+		for (LopHoc l: listlop) {
+			if (malop.equals(l.getMalop())) {
+				tiet = l.getTiet();
+				thu = l.getThu();
+				break;
+			}
+		}
+		for (DangKy dk: listdk) {
+			if(mssv.equals(dk.getMssv())) {
+				StringTokenizer s1 = new StringTokenizer(thu, ",");
+				while (s1.hasMoreTokens()) {
+					StringTokenizer s2 = new StringTokenizer(dk.getThu(), ",");
+					String s1next = s1.nextToken();
+					while (s2.hasMoreTokens()) {
+						if (s1next.equals(s2.nextToken())) {
+							StringTokenizer s3 = new StringTokenizer(tiet, ",");
+							while (s3.hasMoreTokens()) {
+								StringTokenizer s4 = new StringTokenizer(dk.getTiet(), ",");
+								String s3next = s3.nextToken();
+								while(s4.hasMoreTokens()) {
+									if (s3next.equals(s4.nextToken())) return false;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 		return true;
 	}
